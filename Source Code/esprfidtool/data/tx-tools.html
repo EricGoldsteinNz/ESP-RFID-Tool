@@ -1,0 +1,138 @@
+<html>
+<!--<div>Icons made by <a href="https://www.flaticon.com/authors/gregor-cresnar" title="Gregor Cresnar">Gregor Cresnar</a> from <a href="https://www.flaticon.com/"             title="Flaticon">www.flaticon.com</a></div>-->
+<head>
+<link href="dashboard.css" rel="stylesheet">
+<link href="bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+<form class="w-100" action="/experimental" id="transmitbinary" method="POST">
+	<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+			<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">ESP-RFID-Tool NodeMCU</a>
+			<input class="form-control form-control-dark w-100" type="text" name="binHTML" pattern="[0-1]{1,}" placeholder="Transmit Binary">
+			<ul class="navbar-nav px-3">
+			<li class="nav-item text-nowrap">
+			  <button class="btn btn-sm btn-outline-secondary" type="submit">Send</button>
+			</li>
+		  </ul>
+	</nav>
+</form>
+<div class="container-fluid">
+  <div class="row">
+    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+      <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">
+              <span data-feather="home"></span>
+              Exfitrated Data 
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#">
+              <span data-feather="file"></span>
+              TX Mode Tools<span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="data-convert">
+              <span data-feather="shopping-cart"></span>
+              Data Tools
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="settings">
+              <span data-feather="users"></span>
+              Settings
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="help">
+              <span data-feather="bar-chart-2"></span>
+              Help
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-2">
+		<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2">
+			<h1 class="h2">TX Mode Tools</h1>
+			<div class="btn-toolbar mb-2 mb-md-0">
+			</div>
+		</div>
+		<div class="row row-striped border-bottom pt-2 pb-2">
+			<form class="w-100" action="/experimental" id="transmitbinary" method="POST">
+				<div class="col-12 pb-1"><b>Transmit Binary:</b></div>
+				<div class="col-12 pb-1"><input class="form-control form-control-dark col-md-6 col-xs-12" type="text" name="binHTML" pattern="[0-1]{1,}" placeholder="Transmit Binary"></div>
+				<div class="col-12"><button type="submit" class="btn btn-sm btn-outline-secondary">Send</button></div>
+			</form>
+		</div>
+		<div class="row row-striped border-bottom pt-2 pb-2">
+			<form class="w-100" action="/experimental" id="transmitpin" method="POST">
+				<div class="col-12 pb-1"><b>Transmit PIN:</b></div>
+				<div class="col-12 pb-1">Available keys 0-9, * or A, # or B, F1 or C, F2 or D, F3 or E, F4 or F</div>
+				<div class="col-12 pb-1">PIN:<input class="form-control form-control-dark col-md-6 col-xs-12" type="text" name="pinHTML" placeholder="Transmit PIN" required></div>
+				<div class="col-12 pb-1">Delay between "keypresses":<input class="form-control form-control-dark col-md-6 col-xs-12" type="text" name="pinHTMLDELAY" placeholder="Delay (ms)"></div>
+				<div class="col-12 pb-1">
+					<label class="radio-inline"><input type="radio" name="pinBITS" id="pinBITS" value="4" checked>4bit Wiegand</label>
+					<label class="radio-inline"><input type="radio" name="pinBITS" id="pinBITS" value="8">8bit Wiegand</label>
+				</div>
+				<div class="col-12"><button type="submit" class="btn btn-sm btn-outline-secondary">Send</button><!--<img class="img-responsive img-action" src="check-mark.png" />--></div>
+			</form>
+		</div>
+		<div class="row row-striped border-bottom pt-2 pb-2">
+			<form class="w-100" action="/experimental" id="brutepin" method="POST">
+				<div class="col-12 w-100 pb-1"><b>Bruteforce PIN:</b></div>
+				<div class="col-12 pb-1">Delay between "keypresses":<input class="form-control form-control-dark col-md-6 col-xs-12" type="text" name="pinHTMLDELAY" placeholder="Delay (ms)"></div>
+				<div class="col-12 pb-1">Delay between completed PINs:<input class="form-control form-control-dark w-100 col-md-6 col-xs-12" type="text" name="delayAFTERpin" placeholder="Delay (ms)"></div>
+				<div class="col-12 pb-1">PIN begins with:<input class="form-control form-control-dark w-100 col-md-6 col-xs-12" type="text" name="bruteSTARTchar"></div>
+				<div class="col-12 pb-1">Bruteforce start:<input class="form-control form-control-dark w-100 col-md-6 col-xs-12" type="text" name="bruteSTART" placeholder="0000" value="0000"></div>
+				<div class="col-12 pb-1">Bruteforce end:<input class="form-control form-control-dark w-100 col-md-6 col-xs-12" type="text" name="bruteEND" placeholder="9999" value="9999"></div>
+				<div class="col-12 pb-1">PIN ends with:<input class="form-control form-control-dark w-100 col-md-6 col-xs-12" type="text" name="bruteENDchar" value="#"></div>
+				<div class="col-12 pb-1">
+					<label class="radio-inline"><input type="radio" name="pinBITS" id="pinBITS" value="4" checked>4bit Wiegand</label>
+					<label class="radio-inline"><input type="radio" name="pinBITS" id="pinBITS" value="8">8bit Wiegand</label>
+				</div>
+				<div class="col-12"><button type="submit" class="btn btn-sm btn-outline-secondary">Send</button></div>
+			</form>
+		</div>
+		<div class="row row-striped border-bottom pt-2 pb-2">
+			<form class="w-100" action="/bruteforcecards" id="brutecard" method="POST">
+				<div class="col-12 w-100 pb-1"><b>Bruteforce Card:</b></div>
+				<div class="col-12 pb-1">Delay between Cards:<input class="form-control form-control-dark w-100 col-md-6 col-xs-12" type="text" name="delayAFTERcard" placeholder="Delay (ms)"></div>
+				<div class="col-12 pb-1">Facility Code (8 bits):<input class="form-control form-control-dark w-100 col-md-6 col-xs-12" type="text" name="bruteSTART" placeholder="254" value="254"></div>
+				<div class="col-12 pb-1">Bruteforce start (16 bits):<input class="form-control form-control-dark w-100 col-md-6 col-xs-12" type="text" name="bruteSTART" placeholder="0000" value="0000"></div>
+				<div class="col-12 pb-1">Bruteforce end (16 bits):<input class="form-control form-control-dark w-100 col-md-6 col-xs-12" type="text" name="bruteEND" placeholder="9999" value="9999"></div>
+				<div class="col-12"><button type="submit" class="btn btn-sm btn-outline-secondary">Send</button></div>
+			</form>
+		</div>
+		<div class="row row-striped border-bottom pt-2 pb-2">
+			<form class="w-100" action="/experimental" id="fuzz" method="POST">
+				<div class="col-12 w-100 pb-1"><b>Fuzzing:</b></div>
+				<div class="col-12 pb-1">Number of Bits:<input class="form-control form-control-dark col-md-6 col-xs-12" type="text" name="fuzzTimes" value="100"></div>
+				<div class="col-12 pb-1">
+					<label class="radio"><input type="radio" name="fuzzType" value="simultaneous" checked>Transmit a bit simultaneously on D0 and D1 (X bits per line)</label><br>
+					<label class="radio"><input type="radio" name="fuzzType" value="alternating">Transmit alternating between D0 and D1 (0101010101 etc)</label>
+				</div>
+				<div class="col-12"><button type="submit" class="btn btn-sm btn-outline-secondary">Send</button></div>
+			</form>
+		</div>
+		<div class="row row-striped border-bottom pt-2 pb-2">
+			<form class="w-100" action="/experimental" id="dos" method="POST">
+				<div class="col-12 w-100 pb-1"><b>Denial of Service:</b></div>
+				<div class="col-12 pb-1">
+					<label class="radio"><input type="radio" name="fuzzType" value="simultaneous" checked>Transmit simlutaneously on D0 and D1 until stopped</label><br>
+					<label class="radio"><input type="radio" name="fuzzType" value="alternating">Transmit alternating between D0 and D1 (0101010101 etc) until stopped</label>
+					<input type="text" hidden="1" name="fuzzTimes" value="dos">
+				</div>
+				<div class="col-12"><button type="submit" class="btn btn-sm btn-outline-secondary">Send</button></div>
+			</form>
+		</div>
+		
+    </main>
+  </div>
+</div>
+</body>
+		</html>

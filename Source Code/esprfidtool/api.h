@@ -40,13 +40,11 @@ void apiinfo(int prettify) {
   freespace=fs_info.totalBytes-fs_info.usedBytes;
   
   const size_t bufferSize = JSON_ARRAY_SIZE(5) + JSON_OBJECT_SIZE(3);
-  DynamicJsonBuffer jsonAPIbuffer(bufferSize);
-  JsonObject& apilog = jsonAPIbuffer.createObject();
-
+  DynamicJsonDocument apilog(bufferSize);
   apilog["Device"] = "ESP-RFID-Tool";
   apilog["Firmware"] = version;
   apilog["API"] = APIversion;
-  JsonObject& apifs = apilog.createNestedObject("File System");
+  JsonObject apifs = apilog.createNestedObject("File System");
   apifs["Total Space"]=total;
   apifs["Used Space"]=used;
   apifs["Free Space"]=freespace;
@@ -54,14 +52,13 @@ void apiinfo(int prettify) {
   
   String API_Response="";
   if (prettify==1) {
-    apilog.prettyPrintTo(API_Response);
+    serializeJsonPretty(apilog,API_Response);
   }
   else {
-    apilog.printTo(API_Response);
+    serializeJsonPretty(apilog,API_Response);
   }
   server.send(200, "application/json", API_Response);
   delay(50);
-  jsonAPIbuffer.clear();
 }
 
 void apilistlogs(int prettify) {
@@ -79,14 +76,11 @@ void apilistlogs(int prettify) {
   }
   
   const size_t bufferSize = JSON_ARRAY_SIZE(5) + JSON_OBJECT_SIZE(1);
-  DynamicJsonBuffer jsonAPIbuffer(bufferSize);
-  JsonObject& apilog = jsonAPIbuffer.createObject();
-
+  DynamicJsonDocument apilog(bufferSize);
   apilog["Device"] = "ESP-RFID-Tool";
   apilog["Firmware"] = version;
   apilog["API"] = APIversion;
   apilog["Log Count"] = logcount;
-
   int currentlog=0;
   Dir dir2ndrun = SPIFFS.openDir("/");
   while (dir2ndrun.next()) {
@@ -95,7 +89,7 @@ void apilistlogs(int prettify) {
     if ((!FileName.startsWith("/payloads/"))&&(!FileName.startsWith("/esploit.json"))&&(!FileName.startsWith("/esportal.json"))&&(!FileName.startsWith("/esprfidtool.json"))&&(!FileName.startsWith("/config.json"))) {
       currentlog++;
       FileName.remove(0,1);
-      JsonObject& apilistlogs = apilog.createNestedObject(String(currentlog));
+      JsonObject apilistlogs = apilog.createNestedObject(String(currentlog));
       apilistlogs["File Name"]=FileName;
     }
     f.close();
@@ -103,14 +97,13 @@ void apilistlogs(int prettify) {
 
   String API_Response="";
   if (prettify==1) {
-    apilog.prettyPrintTo(API_Response);
+    serializeJsonPretty(apilog,API_Response);
   }
   else {
-    apilog.printTo(API_Response);
+    serializeJson(apilog,API_Response);
   }
   server.send(200, "application/json", API_Response);
   delay(50);
-  jsonAPIbuffer.clear();
 }
 
 void apilog(String logfile,int prettify) {
@@ -132,15 +125,12 @@ void apilog(String logfile,int prettify) {
     }
     f.close();
     const size_t bufferSize = JSON_ARRAY_SIZE(6) + JSON_OBJECT_SIZE(4);
-    DynamicJsonBuffer jsonAPIbuffer(bufferSize);
-    JsonObject& apilog = jsonAPIbuffer.createObject();
-
+    DynamicJsonDocument apilog(bufferSize);
     apilog["Device"] = "ESP-RFID-Tool";
     apilog["Firmware"] = version;
     apilog["API"] = APIversion;
     apilog["Log File"] = logfile;
     apilog["Captures"] = apiCAPTUREcount;
-
     int apiCURRENTcapture=0;
     File f = SPIFFS.open(String()+"/"+logfile, "r");
     while(f.available()) {
@@ -155,7 +145,7 @@ void apilog(String logfile,int prettify) {
           binaryCaptureLINE=binaryCaptureLINE.substring(binaryCaptureLINE.indexOf(" ")+1);
         }
         binaryCaptureLINE.replace("\r","");
-        JsonObject& apiCURRENTcaptureOBJECT = apilog.createNestedObject(String(apiCURRENTcapture));
+        JsonObject apiCURRENTcaptureOBJECT = apilog.createNestedObject(String(apiCURRENTcapture));
         apiCURRENTcaptureOBJECT["Bit Count"]=binaryCaptureLINE.length();
         apiCURRENTcaptureOBJECT["Binary"]=binaryCaptureLINE;
         if(line.indexOf(",HEX:") > 0) {
@@ -177,13 +167,12 @@ void apilog(String logfile,int prettify) {
     f.close();
     String API_Response="";
     if (prettify==1) {
-      apilog.prettyPrintTo(API_Response);
+      serializeJsonPretty(apilog,API_Response);
     }
     else {
-      apilog.printTo(API_Response);
+      serializeJson(apilog,API_Response);
     }
     server.send(200, "application/json", API_Response);
     delay(50);
-    jsonAPIbuffer.clear();
   }
 }
