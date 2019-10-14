@@ -22,12 +22,12 @@ Please see the original at https://github.com/rfidtool/ESP-RFID-Tool
 
 4. Install the esp8266 board libraries (Better Instructions to come)
 
-5. Install the arduinoJSON and ESP8266FTP libraries (Better Instructions to come)
+5. Install the arduinoJSON (Tested up to 6.12.0) and ESP8266FTP libraries (Better Instructions to come)
 
 6. Install the ESP8266FS tool for arduino (Better Instructions to come)
 
 
-##Original ESP-RFID-Tool
+# Original ESP-RFID-Tool
 
 By Corey Harding  
   
