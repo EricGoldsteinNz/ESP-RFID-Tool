@@ -1,37 +1,37 @@
-# ESP-RFID-Tool  
+# ESP-RFID-Tool NodeMCU 
+By Sam Shute
+
+The original ESP-RFID-Tool by Corey Harding was amazing, however I wanted to make it even cheaper and more accessible, I also ran into issues when trying to build the code with updated libraries.
+
+For the cost of ~$2USD this fork can be built on a NodeMCU development board, making the chip essentially disposable on red team and physical penetration testing engagements.
+
+I've also updated the interface to be easier to use. 
+
+I've also tested the board with multiple readers and controllers when using the original TX Mode and found it to work without issue.
+
+This is currently a work in progress. 
+
+Please see the original at https://github.com/rfidtool/ESP-RFID-Tool
+
+## Build Instructions
+1. Purchase a NodeMCU. These can be purchased from aliexpress for ~$2USD https://www.aliexpress.com/item/32656775273.html (I like the the 'V3 not soldered' version because its really cheap, you can solder the wires directly to the board, and it still have the microUSB connector)
+
+2. Install the Arduino IDE from https://www.arduino.cc/en/Main/Software
+
+3. Install the Arduino Code 2.4.2 (Better Instructions to come)
+
+4. Install the esp8266 board libraries (Better Instructions to come)
+
+5. Install the arduinoJSON and ESP8266FTP libraries (Better Instructions to come)
+
+
+
+
+#Original ESP-RFID-Tool
+
 By Corey Harding  
   
-![Logo](Images/logo.png?raw=true)  
-  
-Official website:  
-* www.rfid-tool.com  
-  
-![Board](Images/board.jpg?raw=true)  
-Hardware is manufactured by April Brother and can be purchased direct from China for ~$20.00 from their  
-* Official Store: https://blog.aprbrother.com/product/esp-rfid-tool  
-* AliExpress Store: https://www.aliexpress.com/item/ESP-RFID-Tool/32850151497.html  
-* Tindie Store: https://www.tindie.com/products/aprbrother/esp-rfid-tool/  
-* eBay Store: https://www.ebay.com/itm/ESP-RFID-Tool-for-logging-Wiegand-data/253417849827  
-  
-Third Party Distributors:  
-* Hacker Warehouse(USA): https://hackerwarehouse.com/product/esp-rfid-tool/  
-  
-Video Demos of Capturing Credentials using various technologies that utilize a Wiegand Interface:  
-* Performing a REPLAY ATTACK using the Experimental TX feature: https://youtu.be/u1y7UZpup9I  
-* Brute forcing PIN codes using the Experimental TX feature: https://youtu.be/OZCaypGBVv4  
-* Portable HID 5375 Long Range RFID Reader: https://youtu.be/B86926CHImE  
-* HID 5355 RFID/Keypad Reader: https://youtu.be/ojIpcY8Y3KQ  
-* HID multiCLASS RM40 RFID/Magstripe Reader: https://youtu.be/9OccRaLxXg8  
-* HID multiCLASS RFID Reader: https://youtu.be/2sCLkpuxAks  
-* RFID/Biometric/Keypad with Electronic Deadbolt: https://youtu.be/0o8r_ufRrFo  
-  
-Firmware:  
-* Official  
-  * ESP-RFID-Tool: https://github.com/rfidtool/ESP-RFID-Tool/releases  
-    * Releases >=1.1.0 are compiled with esp8266 board manager package 2.4.1  
-    * Releases < 1.1.0 are compiled with esp8266 board manager package 2.3.0  
-* Unofficial  
-  * Port of Tastic RFID Thief: https://github.com/exploitagency/ESP-RFID-Thief/releases  
+
   
 ## Intended use cases  
 * Security researchers performing red team assessments.  
