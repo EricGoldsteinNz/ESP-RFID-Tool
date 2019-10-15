@@ -18,13 +18,23 @@ Please see the original at https://github.com/rfidtool/ESP-RFID-Tool
 
 2. Install the Arduino IDE from https://www.arduino.cc/en/Main/Software
 
-3. Install the Arduino Code 2.4.2 (Better Instructions to come)
+3. Install the ESP8266 board libraries (See the [detailed steps file.](https://github.com/EricGoldsteinNz/ESP-RFID-Tool/blob/master/Detailed_Steps.md))
 
-4. Install the esp8266 board libraries (Better Instructions to come)
+4. Install the arduinoJSON (Tested up to 6.12.0) and ESP8266FTP libraries (Better Instructions to come)
 
-5. Install the arduinoJSON (Tested up to 6.12.0) and ESP8266FTP libraries (Better Instructions to come)
+5. Install the ESP8266FS tool for arduino (Better Instructions to come)
 
-6. Install the ESP8266FS tool for arduino (Better Instructions to come)
+6.  Open the code in the Arduino IDE.
+
+7. Set up the configuration in the **Tools** menu.
+
+8. Plug in the NodeMCU using a USB to microUSB cable. In the Arduino IDE open the **Tools** menu, select **Port**, then whichever **COM x** is your NodeMCU.
+
+9. Upload the code to your NodeMCU.
+
+10. Upload the **data** folder contents to your NodeMCU by using the Arduino IDE **Tools** menu and selecting **ESP8266 Sketch Data Upload**. 
+
+
 
 
 # Original ESP-RFID-Tool
