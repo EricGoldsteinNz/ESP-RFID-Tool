@@ -2,7 +2,7 @@
 The steps below for each section provide a step-by-step method to install or configure.
 
 ## Install the ESP8266 Board Libraries
-Currently I recommend installing the Arduino Core 2.4.2. I will update the code to work with the latest core, however currently it does not seem to function properly.
+Currently I recommend installing the ESP8266 Core 2.4.2. I will update the code to work with the latest core, however currently it does not seem to function properly at the moment.
 
 1. Open the Arduino IDE.
 
