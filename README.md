@@ -14,7 +14,7 @@ This is currently a work in progress.
 Please see the original at https://github.com/rfidtool/ESP-RFID-Tool
 
 ## Build Instructions
-1. Purchase a NodeMCU. These can be purchased from aliexpress for ~$2USD https://www.aliexpress.com/item/32656775273.html (I like the the 'V3 not soldered' version because its really cheap, you can solder the wires directly to the board, and it still have the microUSB connector)
+1. Purchase a NodeMCU. These can be purchased from aliexpress for ~$2USD https://www.aliexpress.com/item/32656775273.html (I like the the 'V3 not soldered' version because its really cheap, you can solder the wires directly to the board, and it still has the microUSB connector)
 
 2. Install the Arduino IDE from https://www.arduino.cc/en/Main/Software
 
